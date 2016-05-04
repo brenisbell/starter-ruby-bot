@@ -43,10 +43,6 @@ client.on :message do |data|
       logger.debug("And it was a direct message")
     end
 
-  when 'attachment', 'bot attachment' then
-    # attachment messages require using web_client
-    client.web_client.chat_postMessage(post_message_payload(data))
-    logger.debug("Attachment message posted")
 
   when bot_mentioned(client)
     client.message channel: data['channel'], text: 'toddler chris needs these more than me @toddlerchris: :taco:'
