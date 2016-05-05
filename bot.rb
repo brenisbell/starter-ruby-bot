@@ -47,11 +47,11 @@ client.on :message do |data|
   when 'ass', 'shit', 'fuck', 'pussy', 'damn', 'god damn', 'hell no' then
     client.typing channel: data['channel']
     client.message channel: data['channel'], text: "<@#{data['user']}>Now that's funny!."
-    logger.debug("<@#{data['user']}> said hi")
+    logger.debug("<@#{data['user']}> said hii")
 
     if direct_message?(data)
       client.message channel: data['channel'], text: "ouch"
-      logger.debug("And it was a direct message")
+      logger.debug("And it was a direct messages")
     end
 
   when bot_mentioned(client)
