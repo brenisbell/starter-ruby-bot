@@ -31,8 +31,8 @@ end
 
 # listen for hello (connection) event - https://api.slack.com/events/hello
 client.on :message_deleted do
-  client.typing channel: data['channel']
-    client.message channel: data['channel'], text: "I swa that <@#{data['user']}>."
+     client.message channel: data['channel']['id'], text: "i saw that"
+    logger.debug("deleted message")
 end
 
 # listen for message event - https://api.slack.com/events/message
