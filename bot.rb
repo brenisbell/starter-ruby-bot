@@ -33,9 +33,9 @@ end
 client.on :message do |data|
 
   case data['text']
-  when 'hi', 'bot hi' then
+  when 'shit', 'fuck' then
     client.typing channel: data['channel']
-    client.message channel: data['channel'], text: "Hello <@#{data['user']}>."
+    client.message channel: data['channel'], text: "Damn <@#{data['user']}>."
     logger.debug("<@#{data['user']}> said hi")
 
     if direct_message?(data)
@@ -43,21 +43,14 @@ client.on :message do |data|
       logger.debug("And it was a direct message")
     end
 
-  case data['text']
-  when 'ass', 'shit', 'fuck', 'pussy', 'damn', 'god damn', 'hell no' then
-    client.typing channel: data['channel']
-    client.message channel: data['channel'], text: "<@#{data['user']}>Now that's funny!."
-    logger.debug("<@#{data['user']}> said hii")
-
-    if direct_message?(data)
-      client.message channel: data['channel'], text: "ouch"
-      logger.debug("And it was a direct messages")
-    end
+  when 'attachment', 'bot attachment' then
+    # attachment messages require using web_client
+    client.web_client.chat_postMessage(post_message_payload(data))
+    logger.debug("Attachment message posted")
 
   when bot_mentioned(client)
-    client.message channel: data['channel'], text: 'toddler chris needs these more than me @toddlerchris: :taco:'
+    client.message channel: data['channel'], text: 'You really do care about me. :heart:'
     logger.debug("Bot mentioned in channel #{data['channel']}")
-    
 
   when 'bot help', 'help' then
     client.message channel: data['channel'], text: help
@@ -92,17 +85,17 @@ def help
 end
 
 def post_message_payload(data)
-  main_msg = 'Beep Beep Boop is a ridiculously simple hosting platform for your Slackbots.'
+  main_msg = 'help me'
   {
     channel: data['channel'],
       as_user: true,
       attachments: [
         {
           fallback: main_msg,
-          pretext: 'We bring bots to life. :sunglasses: :thumbsup:',
-          title: 'Host, deploy and share your bot in seconds.',
-          image_url: 'https://storage.googleapis.com/beepboophq/_assets/bot-1.22f6fb.png',
-          title_link: 'https://beepboophq.com/',
+          pretext: ':sunglasses: :thumbsup:',
+          title: 'meemee',
+          image_url: 'http://i.imgur.com/mg8SjSt.jpg',
+          title_link: 'dang',
           text: main_msg,
           color: '#7CD197'
         }
