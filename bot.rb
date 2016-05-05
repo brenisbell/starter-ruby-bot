@@ -34,11 +34,6 @@ client.on :hello do
   puts "Hello <@#{data['user']}>"
 end
 
-# listen for channel_joined event - https://api.slack.com/events/channel_joined
-client.on :message_deleted do
-  puts "later <@#{data['user']}>"
-end
-
 # listen for message event - https://api.slack.com/events/message
 client.on :message do |data|
 
