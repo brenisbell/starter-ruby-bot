@@ -118,9 +118,10 @@ def post_message_payload2(data)
       attachments: [
         {
           fallback: main_msg,
-          
+          pretext: ':sunglasses: :thumbsup:',
+          title: 'meemee',
           image_url: 'http://i.imgur.com/mg8SjSt.jpg',
-          title_link: 'it b ok',
+          title_link: 'dang',
           text: main_msg,
           color: '#7CD197'
         }
