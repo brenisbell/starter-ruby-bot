@@ -47,10 +47,6 @@ client.on :message do |data|
     client.typing channel: data['channel']
     client.message channel: data['channel'], text: "now that's funny!"
     logger.debug("<@#{data['user']}> said hi")
-
-    if direct_message?(data)
-      client.message channel: data['channel'], text: "now that's funny!"
-      logger.debug("And it was a direct message")
     end
 
   when bot_mentioned(client)
