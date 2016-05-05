@@ -29,16 +29,6 @@ client.on :channel_joined do |data|
   end
 end
 
-# listen for hello (connection) event - https://api.slack.com/events/hello
-client.on :message_deleted do
-     client.message channel: data['channel']['id'], text: "i saw that"
-end
-
-# listen for hello (connection) event - https://api.slack.com/events/hello
-client.on :presence_change do
-     client.message channel: data['channel']['id'], text: "hello or goodbye"
-end
-
 # listen for message event - https://api.slack.com/events/message
 client.on :message do |data|
 
