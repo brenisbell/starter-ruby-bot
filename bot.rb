@@ -29,6 +29,8 @@ client.on :channel_joined do |data|
   end
 end
 
+
+
 # listen for message event - https://api.slack.com/events/message
 client.on :message do |data|
 
