@@ -43,6 +43,10 @@ client.on :message do |data|
     client.typing channel: data['channel']
     client.message channel: data['channel'], text: "Hehe I like that <@#{data['user']}>."
     logger.debug("<@#{data['user']}> said hi")
+        if direct_message?(data)
+      client.message channel: data['channel'], text: "you silly"
+      logger.debug("And it was a direct message")
+    end
     end
 
   when 'attachment', 'bot attachment', ':taco:' then
