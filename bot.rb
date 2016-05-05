@@ -35,6 +35,12 @@ client.on :message_deleted do
     logger.debug("deleted message")
 end
 
+# listen for hello (connection) event - https://api.slack.com/events/hello
+client.on :presence_change do
+     client.message channel: data['channel']['id'], text: "hello or goodbye"
+    logger.debug("presents change")
+end
+
 # listen for message event - https://api.slack.com/events/message
 client.on :message do |data|
 
@@ -43,10 +49,10 @@ client.on :message do |data|
     client.typing channel: data['channel']
     client.message channel: data['channel'], text: "Hehe I like that <@#{data['user']}>."
     logger.debug("<@#{data['user']}> said hi")
-        if direct_message?(data)
-      client.message channel: data['channel'], text: "you silly"
+
+    if direct_message?(data)
+      client.message channel: data['channel'], text: "you silly."
       logger.debug("And it was a direct message")
-    end
     end
 
   when 'attachment', 'bot attachment', ':taco:' then
