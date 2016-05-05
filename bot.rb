@@ -39,14 +39,10 @@ end
 client.on :message do |data|
 
   case data['text']
-  when 'shit', 'fuck' then
+  when 'shit', 'fuck', 'dick', 'balls', 'damn', 'mother fucker', 'tits', 'turd', 'pussy' then
     client.typing channel: data['channel']
-    client.message channel: data['channel'], text: "Damn <@#{data['user']}>."
+    client.message channel: data['channel'], text: "Hehe I like that <@#{data['user']}>."
     logger.debug("<@#{data['user']}> said hi")
-
-    if direct_message?(data)
-      client.message channel: data['channel'], text: "It\'s nice to talk to you directly."
-      logger.debug("And it was a direct message")
     end
 
   when 'attachment', 'bot attachment', ':taco:' then
