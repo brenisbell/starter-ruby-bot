@@ -32,13 +32,11 @@ end
 # listen for hello (connection) event - https://api.slack.com/events/hello
 client.on :message_deleted do
      client.message channel: data['channel']['id'], text: "i saw that"
-    logger.debug("deleted message")
 end
 
 # listen for hello (connection) event - https://api.slack.com/events/hello
 client.on :presence_change do
      client.message channel: data['channel']['id'], text: "hello or goodbye"
-    logger.debug("presents change")
 end
 
 # listen for message event - https://api.slack.com/events/message
