@@ -29,6 +29,11 @@ client.on :channel_joined do |data|
   end
 end
 
+# listen for hello (connection) event - https://api.slack.com/events/hello
+client.on :message_deleted do
+  client.typing channel: data['channel']
+    client.message channel: data['channel'], text: "I swa that <@#{data['user']}>."
+end
 
 # listen for message event - https://api.slack.com/events/message
 client.on :message do |data|
@@ -44,7 +49,7 @@ client.on :message do |data|
       logger.debug("And it was a direct message")
     end
 
-  when 'attachment', 'bot attachment', ':taco:', '<@#{data['toddlerchris']}>:taco:' then
+  when 'attachment', 'bot attachment', ':taco:' then
     # attachment messages require using web_client
     client.web_client.chat_postMessage(post_message_payload(data))
     logger.debug("Attachment message posted")
