@@ -16,7 +16,8 @@ client = Slack::RealTime::Client.new
 
 # listen for hello (connection) event - https://api.slack.com/events/hello
 client.on :hello do
-  logger.debug("Connected '#{client.self['name']}' to '#{client.team['name']}' team at https://#{client.team['domain']}.slack.com.")
+  client.web_client.chat_postMessage(post_message_payload2(data))
+    logger.debug("hello")
 end
 
 # listen for channel_joined event - https://api.slack.com/events/channel_joined
@@ -102,6 +103,24 @@ def post_message_payload(data)
           title: 'meemee',
           image_url: 'http://i.imgur.com/mg8SjSt.jpg',
           title_link: 'dang',
+          text: main_msg,
+          color: '#7CD197'
+        }
+      ]
+  }
+end
+
+def post_message_payload2(data)
+  main_msg = 'hello again'
+  {
+    channel: data['channel'],
+      as_user: true,
+      attachments: [
+        {
+          fallback: main_msg,
+          
+          image_url: 'http://i.imgur.com/mg8SjSt.jpg',
+          title_link: 'it b ok',
           text: main_msg,
           color: '#7CD197'
         }
