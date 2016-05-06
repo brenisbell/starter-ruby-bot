@@ -56,7 +56,7 @@ client.on :message do |data|
   when '*Tomato and Onion Leaderboard*' then
     # attachment messages require using web_client
     client.web_client.chat_postMessage(post_message_payload3(data))
-    logger.debug("sellse")
+    logger.debug("leaderboard")
     
   when 'ha' then
     client.typing channel: data['channel']
