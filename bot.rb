@@ -43,7 +43,7 @@ client.on :message do |data|
       logger.debug("And it was a direct message")
     end
 
-  when 'attachment', 'bot attachment', ':taco:', 'oops', 'yay!', '*Tomato and Onion Leaderboard*' then
+  when 'attachment', 'bot attachment', ':taco:', 'oops', 'yay!', then
     # attachment messages require using web_client
     client.web_client.chat_postMessage(post_message_payload(data))
     logger.debug("Attachment message posted")
@@ -51,6 +51,11 @@ client.on :message do |data|
   when 'Sorry, you can only give tacos to other people on your team.' then
     # attachment messages require using web_client
     client.web_client.chat_postMessage(post_message_payload2(data))
+    logger.debug("sellse")
+    
+  when '*Tomato and Onion Leaderboard*' then
+    # attachment messages require using web_client
+    client.web_client.chat_postMessage(post_message_payload3(data))
     logger.debug("sellse")
     
   when 'ha' then
@@ -133,4 +138,20 @@ def post_message_payload2(data)
   }
 end
 
+def post_message_payload3(data)
+  main_msg = '...'
+  {
+    channel: data['channel'],
+      as_user: true,
+      attachments: [
+        {
+          fallback: main_msg,
+          image_url: 'http://i.giphy.com/l396IsyYn5NUCLcOc.gif',
+          title_link: 'dang',
+          text: main_msg,
+          color: '#527BE7'
+        }
+      ]
+  }
+end
 client.start!
