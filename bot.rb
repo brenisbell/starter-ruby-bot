@@ -47,6 +47,11 @@ client.on :message do |data|
     # attachment messages require using web_client
     client.web_client.chat_postMessage(post_message_payload(data))
     logger.debug("Attachment message posted")
+    
+  when 'ha', 'wow' then
+    client.typing channel: data['channel']
+    client.message channel: data['channel'], text: "im lame."
+    logger.debug("<@#{data['user']}> ha")
 
   when bot_mentioned(client)
     client.message channel: data['channel'], text: 'You really do care about me. :heart:'
