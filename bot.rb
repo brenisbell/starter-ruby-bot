@@ -33,7 +33,7 @@ end
 client.on :message do |data|
 
   case data['text']
-  when 'shit', 'fuck', 'dick', 'balls', 'damn', 'mother fucker', 'tits', 'turd', 'pussy' then
+  when 'shit', 'fuck', 'dick', 'balls', 'damn', 'mother fucker', 'tits', 'turd', 'pussy', 'fuck you', 'fuck that' then
     client.typing channel: data['channel']
     client.message channel: data['channel'], text: "Hehe I like that <@#{data['user']}>."
     logger.debug("<@#{data['user']}> said hi")
@@ -43,7 +43,7 @@ client.on :message do |data|
       logger.debug("And it was a direct message")
     end
 
-  when 'attachment', 'bot attachment', ':taco:' then
+  when 'attachment', 'bot attachment', ':taco:', 'oops', 'yay!' then
     # attachment messages require using web_client
     client.web_client.chat_postMessage(post_message_payload(data))
     logger.debug("Attachment message posted")
