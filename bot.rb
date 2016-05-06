@@ -43,14 +43,15 @@ client.on :message do |data|
       logger.debug("And it was a direct message")
     end
 
-  when 'attachment', 'bot attachment', ':taco:', 'oops', 'yay!' then
+  when 'attachment', 'bot attachment', ':taco:', 'oops', 'yay!', 'Tomato and Onion Leaderboard*​' then
     # attachment messages require using web_client
     client.web_client.chat_postMessage(post_message_payload(data))
     logger.debug("Attachment message posted")
+  
     
-  when 'ha', 'wow' then
+  when 'ha' then
     client.typing channel: data['channel']
-    client.message channel: data['channel'], text: "im lame."
+    client.message channel: data['channel'], text: "#funnynotfunny"
     logger.debug("<@#{data['user']}> ha")
 
   when bot_mentioned(client)
