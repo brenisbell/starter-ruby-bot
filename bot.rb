@@ -117,17 +117,17 @@ def post_message_payload(data)
 end
 
 def post_message_payload2(data)
-  main_msg = 'oh for shame'
+  main_msg = '...'
   {
     channel: data['channel'],
       as_user: true,
       attachments: [
         {
           fallback: main_msg,
-          image_url: 'http://i.giphy.com/3o6EhHXuPCB1ypX2w0.gif',
+          image_url: 'http://i.giphy.com/3o7qE5fLZwYjgY2iSQ.gif',
           title_link: 'dang',
           text: main_msg,
-          color: '#000000'
+          color: '#527BE7'
         }
       ]
   }
