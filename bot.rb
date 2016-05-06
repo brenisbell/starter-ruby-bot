@@ -73,6 +73,11 @@ client.on :message do |data|
     client.message channel: data['channel'], text: "jus fergettit"
     logger.debug("<@#{data['user']}> what")
     
+  when 'What?' then
+    client.typing channel: data['channel']
+    client.message channel: data['channel'], text: "What, what?"
+    logger.debug("<@#{data['user']}> what what")
+    
   when bot_mentioned(client)
     client.message channel: data['channel'], text: "why don't you scrub all over dees?"
     logger.debug("Bot mentioned in channel #{data['channel']}")
