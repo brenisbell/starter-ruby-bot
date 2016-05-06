@@ -50,21 +50,7 @@ client.on :message do |data|
 
   when 'Sorry, you can only give tacos to other people on your team.' then
     # attachment messages require using web_client
-    client.web_client.chat_postMessage({
-    channel: data['channel'],
-      as_user: true,
-      attachments: [
-        {
-          fallback: main_msg,
-          pretext: ':sunglasses: :thumbsup:',
-          title: 'meemee',
-          image_url: 'http://i.imgur.com/mg8SjSt.jpg',
-          title_link: 'dang',
-          text: main_msg,
-          color: '#7CD197'
-        }
-      ]
-  })
+    client.web_client.chat_postMessage(post_message_payload2(data))
     logger.debug("sellse")
     
   when 'ha' then
@@ -130,5 +116,21 @@ def post_message_payload(data)
   }
 end
 
+def post_message_payload2(data)
+  main_msg = 'other'
+  {
+    channel: data['channel'],
+      as_user: true,
+      attachments: [
+        {
+          fallback: main_msg,
+          image_url: 'http://i.imgur.com/mg8SjSt.jpg',
+          title_link: 'dang',
+          text: main_msg,
+          color: '#7CD197'
+        }
+      ]
+  }
+end
 
 client.start!
