@@ -58,15 +58,15 @@ client.on :message do |data|
     client.web_client.chat_postMessage(post_message_payload3(data))
     logger.debug("leaderboard")
     
+  when 'lol' then
+    # attachment messages require using web_client
+    client.web_client.chat_postMessage(post_message_payload4(data))
+    logger.debug("lol")
+    
   when 'ha' then
     client.typing channel: data['channel']
     client.message channel: data['channel'], text: "#funnynotfunny"
     logger.debug("<@#{data['user']}> ha")
-    
-  when 'lol' then
-    client.typing channel: data['channel']
-    client.message channel: data['channel'], text: "lipstick on lurdies! :kiss:"
-    logger.debug("<@#{data['user']}> lol")
     
   when bot_mentioned(client)
     client.message channel: data['channel'], text: 'You really do care about me. :heart:'
@@ -154,4 +154,22 @@ def post_message_payload3(data)
       ]
   }
 end
+
+def post_message_payload3(data)
+  main_msg = '...'
+  {
+    channel: data['channel'],
+      as_user: true,
+      attachments: [
+        {
+          fallback: main_msg,
+          image_url: 'http://i.giphy.com/3oEjHKO4CODwxBV5sY.gif',
+          title_link: 'dang',
+          text: main_msg,
+          color: '#527BE7'
+        }
+      ]
+  }
+end
+
 client.start!
