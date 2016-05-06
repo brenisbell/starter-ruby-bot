@@ -43,7 +43,7 @@ client.on :message do |data|
       logger.debug("And it was a direct message")
     end
 
-  when 'attachment', 'bot attachment', ':taco:', 'oops', 'yay!', 'Tomato and Onion Leaderboard*​' then
+  when 'attachment', 'bot attachment', ':taco:', 'oops', 'yay!', '*Tomato and Onion Leaderboard*​' then
     # attachment messages require using web_client
     client.web_client.chat_postMessage(post_message_payload(data))
     logger.debug("Attachment message posted")
