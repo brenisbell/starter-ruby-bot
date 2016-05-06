@@ -100,7 +100,7 @@ def help
 end
 
 def post_message_payload(data)
-  main_msg = 'help me'
+  main_msg = 'feed toddlers tacos'
   {
     channel: data['channel'],
       as_user: true,
@@ -124,7 +124,7 @@ def post_message_payload2(data)
       attachments: [
         {
           fallback: main_msg,
-          image_url: 'http://gph.is/1s0B0LN',
+          image_url: 'http://i.giphy.com/3o6EhHXuPCB1ypX2w0.gif',
           title_link: 'dang',
           text: main_msg,
           color: '#000000'
