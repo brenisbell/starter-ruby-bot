@@ -53,7 +53,7 @@ client.on :message do |data|
     client.web_client.chat_postMessage(post_message_payload2(data))
     logger.debug("sellse")
     
-  when '4). toddlerchris  ​*37*​' then
+  when 'meme' then
     # attachment messages require using web_client
     client.web_client.chat_postMessage(post_message_payload3(data))
     logger.debug("leaderboard")
