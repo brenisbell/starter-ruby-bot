@@ -53,7 +53,7 @@ client.on :message do |data|
     client.web_client.chat_postMessage(post_message_payload2(data))
     logger.debug("sellse")
     
-  when 'heytaco: leaderboard' then
+  when '<@tacobot> leaderboard' then
     # attachment messages require using web_client
     client.web_client.chat_postMessage(post_message_payload3(data))
     logger.debug("leaderboard")
