@@ -63,6 +63,11 @@ client.on :message do |data|
     client.web_client.chat_postMessage(post_message_payload4(data))
     logger.debug("lol")
     
+  when 'lolol' then
+    # attachment messages require using web_client
+    client.web_client.chat_postMessage(post_message_payload4(data))
+    logger.debug("lol")
+    
   when 'ha' then
     client.typing channel: data['channel']
     client.message channel: data['channel'], text: "#funnynotfunny"
