@@ -33,7 +33,7 @@ end
 client.on :message do |data|
 
   case data['text']
-  when 'shit', 'fuck', 'dick', 'balls', 'damn', 'mother fucker', 'tits', 'turd', 'pussy', 'fuck you', 'fuck that' then
+  when 'shit', 'fuck', 'dick', 'balls', 'damn', 'mother fucker', 'tits', 'turd', 'pussy', 'fuck you', 'fuck that', 'damn it' then
     client.typing channel: data['channel']
     client.message channel: data['channel'], text: "Hehe I like that <@#{data['user']}>."
     logger.debug("<@#{data['user']}> said hi")
@@ -84,8 +84,9 @@ client.on :message do |data|
     logger.debug("<@#{data['user']}> what what")
     
   when bot_mentioned(client)
-    client.message channel: data['channel'], text: "why don't you scrub all over dees?"
-    logger.debug("Bot mentioned in channel #{data['channel']}")
+    # attachment messages require using web_client
+    client.web_client.chat_postMessage(post_message_payload5(data))
+    logger.debug("men")
 
   when 'bot help', 'help' then
     client.message channel: data['channel'], text: help
@@ -179,6 +180,23 @@ def post_message_payload4(data)
         {
           fallback: main_msg,
           image_url: 'http://i.giphy.com/3oEjHKO4CODwxBV5sY.gif',
+          title_link: 'dang',
+          text: main_msg,
+          color: '#527BE7'
+        }
+      ]
+  }
+end
+
+def post_message_payload4(data)
+  main_msg = '...'
+  {
+    channel: data['channel'],
+      as_user: true,
+      attachments: [
+        {
+          fallback: main_msg,
+          image_url: 'http://i.giphy.com/26BRAkiJ7CiFGpuKI.gif',
           title_link: 'dang',
           text: main_msg,
           color: '#527BE7'
