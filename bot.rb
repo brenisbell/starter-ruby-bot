@@ -188,7 +188,7 @@ def post_message_payload4(data)
   }
 end
 
-def post_message_payload4(data)
+def post_message_payload5(data)
   main_msg = '...'
   {
     channel: data['channel'],
