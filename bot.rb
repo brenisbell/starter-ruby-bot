@@ -88,6 +88,11 @@ client.on :message do |data|
     client.web_client.chat_postMessage(post_message_payload5(data))
     logger.debug("men")
 
+  when 'Give someone a taco by adding it after their username, like this: ​*@username*​ :taco:.' then
+    # attachment messages require using web_client
+    client.web_client.chat_postMessage(post_message_payload6(data))
+    logger.debug("taaco")
+
   when 'bot help', 'help' then
     client.message channel: data['channel'], text: help
     logger.debug("A call for help")
@@ -197,6 +202,23 @@ def post_message_payload5(data)
         {
           fallback: main_msg,
           image_url: 'http://i.giphy.com/26BRAkiJ7CiFGpuKI.gif',
+          title_link: 'dang',
+          text: main_msg,
+          color: '#527BE7'
+        }
+      ]
+  }
+end
+
+def post_message_payload6(data)
+  main_msg = '...'
+  {
+    channel: data['channel'],
+      as_user: true,
+      attachments: [
+        {
+          fallback: main_msg,
+          image_url: 'http://i.giphy.com/3o7qE5fLZwYjgY2iSQ.gif',
           title_link: 'dang',
           text: main_msg,
           color: '#527BE7'
